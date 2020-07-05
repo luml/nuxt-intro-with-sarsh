@@ -6,24 +6,19 @@
         <span v-if="isShowing">Hide child</span>
         <span v-else>Show child</span>
       </button>
-      <appChild v-id="isShowing" class="modal">
+      <appChild v-if="isShowing" class="modal">
         <button @click="toggleShow">Close</button>
       </appChild>
     </div>
-    <script type="text/x-template" id="childarea">
-      <div>
-      	<h2>Here I am!</h2>
-      <slot></slot>
-      </div>
-    </script>
   </section>
 </template>
 
 <script>
-const Child = {
-  template: "#childarea"
-};
+import appChild from "./../components/Child.vue";
 export default {
+  components: {
+    appChild
+  },
   data() {
     return {
       isShowing: false
@@ -33,9 +28,6 @@ export default {
     toggleShow() {
       this.isShowing = !this.isShowing;
     }
-  },
-  components: {
-    appChild: Child
   }
 };
 </script>

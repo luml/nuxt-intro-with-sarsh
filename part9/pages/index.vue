@@ -6,9 +6,11 @@
         <span v-if="isShowing">Hide child</span>
         <span v-else>Show child</span>
       </button>
-      <appChild v-if="isShowing" class="modal">
-        <button @click="toggleShow">Close</button>
-      </appChild>
+      <transition name="fade">
+        <appChild v-if="isShowing" class="modal">
+          <button @click="toggleShow">Close</button>
+        </appChild>
+      </transition>
     </div>
   </section>
 </template>
@@ -31,5 +33,3 @@ export default {
   }
 };
 </script>
-
-<style></style>

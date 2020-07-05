@@ -7,9 +7,7 @@
 <style>
 body {
   font-family: "Roboto Mono", serif;
-  display: -webkit-box;
   display: flex;
-  -webkit-box-pack: center;
   justify-content: center;
 }
 
@@ -17,14 +15,9 @@ body {
   text-align: center;
   margin: 60px;
   max-width: 370px;
-  display: -webkit-box;
   display: flex;
-  -webkit-box-pack: center;
   justify-content: center;
-  -webkit-box-align: center;
   align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
   flex-direction: column;
 }
 
@@ -49,5 +42,15 @@ h4 {
   padding: 20px;
   width: 200px;
   position: absolute;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.25s ease-out;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

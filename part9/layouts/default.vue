@@ -32,7 +32,7 @@ button {
   cursor: pointer;
 }
 
-h4 {
+h3 {
   margin: 0 0 15px;
 }
 
@@ -40,7 +40,7 @@ h4 {
   background: cyan;
   color: black;
   padding: 20px;
-  width: 200px;
+  width: 150px;
   position: absolute;
 }
 
@@ -52,5 +52,14 @@ h4 {
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
+}
+
+.bk {
+  transition: all 0.05s ease-out;
+}
+
+.blur {
+  filter: blur(2px);
+  opacity: 0.4s;
 }
 </style>

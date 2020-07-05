@@ -1,11 +1,13 @@
 <template>
   <section class="container">
     <div id="app">
-      <h3>Let's triggrt this here modal!</h3>
-      <button @click="toggleShow">
-        <span v-if="isShowing">Hide child</span>
-        <span v-else>Show child</span>
-      </button>
+      <div :class="[isShowing ? blurClass : '', bkClass]">
+        <h3>Let's triggrt this here modal!</h3>
+        <button @click="toggleShow">
+          <span v-if="isShowing">Hide child</span>
+          <span v-else>Show child</span>
+        </button>
+      </div>
       <transition name="fade">
         <appChild v-if="isShowing" class="modal">
           <button @click="toggleShow">Close</button>
@@ -23,7 +25,9 @@ export default {
   },
   data() {
     return {
-      isShowing: false
+      isShowing: false,
+      bkClass: "bk",
+      blurClass: "blur"
     };
   },
   methods: {

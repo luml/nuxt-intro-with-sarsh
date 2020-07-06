@@ -5,7 +5,14 @@
         <p class="overlay-text">I don't like this one</p>
         <button @click="toggleShow">Replace!</button>
       </div>
-      <transition name="flip" mode="out-in">
+      <transition
+        name="flip"
+        mode="out-in"
+        @beforeLeave="beforeLeave(el)"
+        @leave="leave(el, done)"
+        @beforeEnter="beforeEnter(el)"
+        @enter="enter(el, done)"
+      >
         <slot v-if="!isShowing"></slot>
         <img
           v-else
@@ -19,6 +26,26 @@
 
 <script>
 export default {
+  transition: {
+    name: "flip",
+    mode: "out-in",
+    css: false,
+    beforeLeave(el) {
+      console.log("about before leave");
+      console.log(el);
+    },
+    leave(el, done) {
+      console.log("about leave");
+      done();
+    },
+    beforeEnter(el) {
+      console.log("about before enter");
+    },
+    enter(el, done) {
+      console.log("about enter");
+      done();
+    }
+  },
   data() {
     return {
       isShowing: false

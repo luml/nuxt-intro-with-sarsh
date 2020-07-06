@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h3>Hover us</h3>
+    <h4>Hover us</h4>
     <main>
       <appChild>
         <img

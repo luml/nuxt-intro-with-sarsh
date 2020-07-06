@@ -98,4 +98,8 @@ h4 {
   transform: scaleY(0) translateZ(0);
   opacity: 0;
 }
+.filter {
+  display: flex;
+  justify-content: space-evenly;
+}
 </style>

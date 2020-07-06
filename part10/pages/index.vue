@@ -27,12 +27,54 @@
         />
       </appChild>
     </main>
+    <div class="filter">
+      <div class="calculator">
+        <h2>Tip Calculator</h2>
+        <p>
+          <strong>Total: {{ customerTotal }}</strong>
+        </p>
+        <p>15%: {{ customerTotal | tip15 }}</p>
+        <p>20%: {{ customerTotal | tip20 }}</p>
+        <p>25%: {{ customerTotal | tip25 }}</p>
+      </div>
+      <div class="originNumber">
+        <h2>Chained Filters</h2>
+        <p><strong>Original number:</strong> {{ num }}</p>
+        <p>plus5: {{ num | plus5 }}</p>
+        <p>times2: {{ num | times2 }}</p>
+        <p>plus5 then times2: {{ num | plus5 | times2 }}</p>
+        <p>times2 then plus5: {{ num | times2 | plus5 }}</p>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import appChild from "./../components/Child.vue";
 export default {
-  components: { appChild }
+  components: { appChild },
+  data() {
+    return {
+      customerTotal: 35.43,
+      num: 2
+    };
+  },
+  filters: {
+    tip15(value) {
+      return (value * 0.15).toFixed(2);
+    },
+    tip20(value) {
+      return (value * 0.2).toFixed(2);
+    },
+    tip25(value) {
+      return value * (0.25).toFixed(2);
+    },
+    plus5(value) {
+      return value + 5;
+    },
+    times2(value) {
+      return value * 2;
+    }
+  }
 };
 </script>

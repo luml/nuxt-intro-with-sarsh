@@ -1,6 +1,7 @@
 <template>
   <section class="container">
     <div id="app">
+      <nuxt-link to="todos">Todos</nuxt-link>
       <h3>Type here:</h3>
       <textarea
         type="words"

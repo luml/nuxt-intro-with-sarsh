@@ -1,19 +1,15 @@
 <template>
   <section class="container">
     <div id="app">
-      <input type="checkbox" id="john" value="John" v-model="checkedNames" />
-      <label for="john">John</label>
-      <input type="checkbox" id="paul" value="Paul" v-model="checkedNames" />
-      <label for="paul"> Paul</label>
-      <input
-        type="checkbox"
-        id="george"
-        value="George"
-        v-model="checkedNames"
-      />
-      <label for="george"> George</label>
-      <input type="checkbox" id="ringo" value="Ringo" v-model="checkedNames" />
-      <label for="ringo"> Ringo</label>
+      <span v-for="option of options" :key="option.value">
+        <input
+          :id="option.vlaue"
+          :value="option.value"
+          v-model="checkedNames"
+          type="checkbox"
+        />
+        <label for="option.value">{{ option.value }}</label>
+      </span>
 
       <br />
       <span>Checked names: {{ checkedNames }}</span>
@@ -26,7 +22,13 @@ export default {
   components: {},
   data() {
     return {
-      checkedNames: []
+      checkedNames: [],
+      options: [
+        { value: "John" },
+        { value: "Paul" },
+        { value: "George" },
+        { value: "Ringo" }
+      ]
     };
   }
 };

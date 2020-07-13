@@ -61,10 +61,10 @@ export default {
   },
   methods: {
     sortLowest() {
-      this.ratingsInfo.sort((a, b) => (a.rating > b.rating ? 1 : -1));
+      this.ratingsInfo.sort((a, b) => a.rating - b.rating);
     },
     sortHighest() {
-      this.ratingsInfo.sort((a, b) => (a.rating < b.rating ? 1 : -1));
+      this.ratingsInfo.sort((a, b) => b.rating - a.rating);
     }
   }
 };

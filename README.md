@@ -1,2 +1,2 @@
 # nuxt-intro-with-sarsh
-Tiny demo from codepen
+Tiny demo from codepen 🥨

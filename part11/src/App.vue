@@ -28,16 +28,21 @@
           />
         </appChild>
       </main>
+      <main>
+        <supplier></supplier>
+      </main>
     </div>
   </div>
 </template>
 
 <script>
 import appChild from "./components/Child.vue";
+import supplier from './components/Supplier'
 
 export default {
   components: {
-    appChild
+    appChild,
+    supplier,
   }
 };
 </script>

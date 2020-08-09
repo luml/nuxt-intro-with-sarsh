@@ -27,5 +27,6 @@ export default {
       this.isShowing = !this.isShowing;
     }
   }
-};
+}
+
 </script>

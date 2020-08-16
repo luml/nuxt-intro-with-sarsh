@@ -17,8 +17,15 @@ export default new Vuex.Store({
         isCheckingMachine: false,
     },
     actions: {
-        fetchFromInventory() {
-            //
+        fetchFromInventory({commit}) {
+            // ping the inventory to check if there is inventory
+            // assuming there is commit the action to stockItems
+            // remember that we're going to toggle the isRestocking state
+            commit('isRestocking', true)
+            setTimeout(() => {
+                commit('isRestocking', false)
+                commit('stockItems')
+            }, 3000)
         },
         dispense({commit}) {
             commit('isDispensing', true)
@@ -27,6 +34,7 @@ export default new Vuex.Store({
                 commit('isDispensing', false)
             }, 3000)
         },
+        // When to check machine state
         checkMachineState({state, commit}) {
             commit('isCheckingMachine', true)
             return new Promise(resolve => {
@@ -37,13 +45,15 @@ export default new Vuex.Store({
             })
         },
     },
-    getters: {},
+    getters: {
+        isSupplyLow: state => state.supply < 10
+    },
     mutations: {
         isRestocking(state, payload) {
             state.isRestocking = payload
         },
         isDispensing(state, payload) {
-            state.isCheckingMachine = payload
+            state.isDispensing = payload
         },
         dispense(state) {
             state.supply--

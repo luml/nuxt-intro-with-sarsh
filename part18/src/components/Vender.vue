@@ -4,7 +4,7 @@
       <Gears />
       <h2>Dispensing...</h2>
     </div>
-    <div class="loading-state" :style="{ display: isRestocking ? 'block' : 'none' }">
+    <div :style="{ display: isRestocking ? 'block' : 'none' }" class="loading-state">
       <Cart />
       <h2>Restocking</h2>
     </div>
@@ -56,7 +56,8 @@ export default {
       "supply",
       "isRestocking",
       "isDispensing",
-      "isCheckingMachine"
+      "isCheckingMachine",
+      "isSupplyLow"
     ]),
     isInLoadingState() {
       return this.isRestocking || this.isDispensing || this.isCheckingMachine;

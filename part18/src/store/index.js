@@ -8,6 +8,21 @@ let machines = {
     condition: 'working'
 }
 
+let translations = {
+    'en': {
+        productName: 'Potato Chips',
+        supplyText: 'Supply',
+        restockText: 'Restock',
+        productCodeText: 'Product Code'
+    },
+    'es': {
+        productName: 'Papas Fritas',
+        supplyText: 'Suplir',
+        restockText: 'Repoblar',
+        productCodeText: 'Codigo'
+    }
+}
+
 export default new Vuex.Store({
     state: {
         machineName: 'bender',
@@ -15,6 +30,7 @@ export default new Vuex.Store({
         isRestocking: false,
         isDispensing: false,
         isCheckingMachine: false,
+        langSelected: "en",
     },
     actions: {
         fetchFromInventory({commit}) {
@@ -44,9 +60,16 @@ export default new Vuex.Store({
                 }, 3000)
             })
         },
+        toggleLang({commit}) {
+            commit('switchLang')
+        },
     },
     getters: {
-        isSupplyLow: state => state.supply < 10
+        isSupplyLow: state => state.supply < 10,
+
+        transLateLang(state) {
+            return translations[state.langSelected]
+        }
     },
     mutations: {
         isRestocking(state, payload) {
@@ -60,6 +83,9 @@ export default new Vuex.Store({
         },
         stockItems(state) {
             state.supply = 40
+        },
+        switchLang(state) {
+            state.langSelected = state.langSelected == 'en' ? 'es' : 'en'
         }
     }
 })

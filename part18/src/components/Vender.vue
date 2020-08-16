@@ -1,5 +1,6 @@
 <template>
   <div class="wrapper">
+    <button class="language-selection" @click="toggleLang">{{ langSelected }}</button>
     <div :style="{ display: isDispensing ? 'block' : 'none' }" class="loading-state">
       <Gears />
       <h2>Dispensing...</h2>
@@ -15,9 +16,9 @@
     <div :style="{ display: isInLoadingState ? 'none' : 'block' }">
       <Chips />
       <div class="product-name">
-        <span>Potato Chips</span>
-        <h2>Potato Chips</h2>
-        <p>Product Code</p>
+        <span>Lays</span>
+        <h2>{{ translation["productName"] }}</h2>
+        <p>{{ translation["productCodeText"] }}</p>
         <span>7624233</span>
       </div>
     </div>
@@ -41,7 +42,7 @@ import Gears from "./Gears.vue";
 import Cart from "./Cart.vue";
 import Chips from "./Chips.vue";
 import Machine from "./Machine.vue";
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions, mapGetters } from "vuex";
 
 export default {
   name: "Vender",
@@ -57,16 +58,21 @@ export default {
       "isRestocking",
       "isDispensing",
       "isCheckingMachine",
-      "isSupplyLow"
+      "langSelected"
     ]),
     isInLoadingState() {
       return this.isRestocking || this.isDispensing || this.isCheckingMachine;
+    },
+    // How to apply getter
+    translation() {
+
     }
   },
   methods: {
     ...mapActions({
       dispense: "dispense",
-      restock: "fetchFromInventory"
+      restock: "fetchFromInventory",
+      toggleLang: "toggleLang"
     })
   }
 };
